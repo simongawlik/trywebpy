@@ -1,0 +1,26 @@
+trywebpy
+
+
+installed postgres
+installed web.py
+installed psycopg2
+
+//in psql (started from postgres app) created new db
+$ create database trywebpy
+
+//go to sql pgAdmin
+CREATE TABLE todo (
+  id serial primary key,
+  title text,
+  created timestamp default now(),
+  done boolean default 'f'     );
+
+//Create first table
+INSERT INTO todo (title) VALUES ('Learn web.py');
+
+//create user that matches user in code.py
+CREATE USER username WITH PASSWORD 'password'
+//grant that user privileges
+GRANT ALL PRIVILEGES ON TABLE todo TO username;
+
+GRANT USAGE, SELECT ON SEQUENCE todo_id_seq TO username;
